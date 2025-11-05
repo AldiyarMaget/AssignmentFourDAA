@@ -5,9 +5,6 @@ import org.example.util.GraphLoader;
 
 import java.util.*;
 
-/**
- * Tarjan's algorithm for SCC. Builds condensation graph as well.
- */
 public class TarjanSCC {
     private List<List<Integer>> graph;
     private int n;
@@ -74,10 +71,6 @@ public class TarjanSCC {
         }
     }
 
-    /**
-     * Build condensation graph (unweighted) where each SCC is a node.
-     * @return adjacency list of condensation DAG
-     */
     public List<List<Integer>> buildCondensationGraph() {
         Map<Integer, Integer> vertexToSCC = getVertexToSCC();
         int numSCCs = sccs.size();
@@ -99,9 +92,6 @@ public class TarjanSCC {
         return result;
     }
 
-    /**
-     * Public getter mapping original vertex -> SCC index
-     */
     public Map<Integer, Integer> getVertexToSCC() {
         Map<Integer, Integer> map = new HashMap<>();
         for (int s = 0; s < sccs.size(); s++) {
@@ -116,9 +106,6 @@ public class TarjanSCC {
         return metrics;
     }
 
-    /**
-     * Helper to build TarjanSCC from GraphLoader.Graph
-     */
     public static TarjanSCC fromGraphLoader(GraphLoader.Graph g) {
         int n = g.getN();
         List<List<Integer>> adj = new ArrayList<>();

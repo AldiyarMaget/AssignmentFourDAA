@@ -1,13 +1,18 @@
-# Smart City Scheduling - Assignment 4
+# Assignment 4: Graph Algorithms Performance Analysis
 
-Implementation of Strongly Connected Components (SCC), Topological Sorting, and Shortest Paths in DAGs for city-service task scheduling.
+## Description
+Implementation and comparison of three graph algorithms:
+- **SCC (Tarjan)** — Strongly Connected Components detection
+- **Topological Sort (Kahn)** — Topological ordering
+- **DAG Shortest Path** — Shortest paths in Directed Acyclic Graph
 
-## Requirements
+## Build and Run
 
-- Java 11 or higher
-- Maven 3.6 or higher
+### Requirements
+- Java 24
+- Maven
 
-## Build
+### Build
 
 From a clean clone:
 
@@ -152,4 +157,3 @@ All tests are located in `src/test/java/`.
 - Source code is organized in packages as required
 - Public classes have Javadoc comments
 - Key algorithm steps are commented
-
