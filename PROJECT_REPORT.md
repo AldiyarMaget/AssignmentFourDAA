@@ -1,8 +1,9 @@
+
 # Smart City Scheduling - Project Report
 
 ## Project Overview
 
-This project implements a task scheduling analysis and optimization system for smart city/campus applications. The system addresses three main problems: detecting cyclic dependencies, establishing task execution order, and calculating optimal temporal routes.
+This project implements a task scheduling analysis and optimization system for smart cities and campuses. The system addresses three main problems: detecting cyclic dependencies, establishing task execution order, and calculating optimal temporal routes.
 
 ## Implemented Algorithms
 
@@ -58,27 +59,6 @@ Computation of shortest and longest paths in directed acyclic graphs.
 Critical for critical path method. Enables determining minimum and maximum project completion time, finding bottlenecks.
 
 ## Project Structure
-
-```
-src/main/java/
-  graph/
-    scc/TarjanSCC.java          - SCC implementation
-    topo/TopologicalSort.java   - Topological sorting
-    dagsp/DAGShortestPath.java  - DAG paths
-  util/
-    Metrics.java                 - Performance metrics
-    GraphLoader.java             - Graph loading from JSON
-  Main.java                      - Main program
-  PerformanceComparison.java     - Algorithm comparison
-
-src/test/java/
-  graph/scc/TarjanSCCTest.java
-  graph/topo/TopologicalSortTest.java
-  graph/dagsp/DAGShortestPathTest.java
-  util/GraphLoaderTest.java
-
-data/                           - 9 test datasets
-```
 
 ## Test Data
 
@@ -148,13 +128,13 @@ Greatest effectiveness on graphs with cycles. For acyclic graphs, no compression
 **For acyclic graphs (known absence of cycles):**
 1. Topological Sort (skip SCC)
 2. DAG Shortest Path
-Minimal execution time, maximum efficiency.
+   Minimal execution time, maximum efficiency.
 
 **For graphs with potential cycles:**
 1. SCC (Tarjan) - mandatory
 2. Topological Sort on condensed graph
 3. DAG Shortest Path
-Full sequence ensures result correctness.
+   Full sequence ensures result correctness.
 
 ### Optimization for Different Task Types
 
@@ -191,6 +171,24 @@ Unified Metrics interface implemented for tracking:
 
 Metrics enable performance analysis and bottleneck identification.
 
+## Build and Run
+
+### Requirements
+- Java 24
+- Maven
+
+### Build Project
+
+### Execution
+
+**Performance comparison (generates CSV comparison table):**
+
+Creates `algorithm_comparison.csv` file with performance metrics for all algorithms across all datasets.
+
+### Testing
+
+
+
 ## Conclusions
 
 All three algorithms are efficient and production-ready. Execution time remains in millisecond range even for graphs with 50+ vertices.
@@ -209,3 +207,29 @@ All three algorithms are efficient and production-ready. Execution time remains 
 - Critical path method in project management
 
 System is ready for real-world task scheduling scenarios with dependencies.
+
+## Technical Details
+
+**Technologies Used:**
+- Java 24 (OpenJDK)
+- Maven for build management
+- JUnit for testing
+- Jackson for JSON processing (versions 2.20.1 / 3.0-rc5)
+
+**Weight Model:**
+Uses **edge weights** (`weight_model: "edge"`). Edge weights represent task dependencies or durations between tasks.
+
+**Metrics:**
+All algorithms track:
+- DFS visits
+- Edge traversals
+- Queue operations (pops/pushes)
+- Edge relaxations
+- Execution time (nanoseconds/milliseconds)
+
+## Documentation
+
+- `PROJECT_REPORT.md` - Detailed analysis and conclusions (this file)
+- `README.md` - Build and run instructions
+- `algorithm_comparison.csv` - CSV file with performance comparison results
+- Javadoc comments in source code for all public classes
